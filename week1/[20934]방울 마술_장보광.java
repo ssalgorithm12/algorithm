@@ -22,7 +22,7 @@ class Solution {
             	}
             }
             int n = Integer.parseInt(str.substring(4));
-        	result = 0;
+            result = 0;
             if(a==2&&n == 0) result = 2;
             else if(a==1 &&(n&1)==0 ) result = 1;
             else if(a!=1 &&(n&1)==1 ) result = 1;
