@@ -13,7 +13,7 @@ class Solution {
         for(int x = 1; x <= t; x++)
         {
             int a=0;
-        	float[] arr = new float[3];
+            float[] arr = new float[3];
             String str = br.readLine();
             for(int i = 0; i<3; i++) {
             	if(str.charAt(i)=='o') {
@@ -23,9 +23,9 @@ class Solution {
             }
             int n = Integer.parseInt(str.substring(4));
         	result = 0;
-        	if(a==2&&n == 0) result = 2;
-        	else if(a==1 &&(n&1)==0 ) result = 1;
-        	else if(a!=1 &&(n&1)==1 ) result = 1;
+            if(a==2&&n == 0) result = 2;
+            else if(a==1 &&(n&1)==0 ) result = 1;
+            else if(a!=1 &&(n&1)==1 ) result = 1;
             sb.append("#"+x+" "+ result +"\n");
         }
         System.out.print(sb);
