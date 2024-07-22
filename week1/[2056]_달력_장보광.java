@@ -9,10 +9,9 @@ class Solution
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
-         
+        int[] md = {31,28,31,30,31,30,31,31,30,31,30,31}; 
         for(int x = 1; x <= t; x++)
         {
-            int[] md = {31,28,31,30,31,30,31,31,30,31,30,31};
             String ymd = br.readLine();
             int m = Integer.parseInt(ymd.substring(4,6));
             int d = Integer.parseInt(ymd.substring(6));
