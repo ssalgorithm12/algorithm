@@ -43,15 +43,11 @@ class Solution {
 		visited[next] = 1;
 		if(l== n-2) {
 			sum = sum+arr2[next][1];
-			if(sum<min) {
-				min = sum;
-			}
+			if(sum<min) min = sum;
 		}
 		else {
 			for(int i = 2; i < n; i++) {
-				if(visited[i]==0) {
-					dfs(i, arr2, visited,sum+arr2[next][i] ,l+1, n);
-				}
+				if(visited[i]==0) dfs(i, arr2, visited,sum+arr2[next][i] ,l+1, n);
 			}			
 		}
 		visited[next]=0;
