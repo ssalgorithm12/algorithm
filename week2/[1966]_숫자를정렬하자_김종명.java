@@ -27,8 +27,7 @@ class Solution{
     }
 
     for(int i=0; i<arr.length; i++){
-      newArr[sumArr[arr[i]] - 1] = arr[i];
-      sumArr[arr[i]] -= 1;
+      newArr[--sumArr[arr[i]]] = arr[i];
     }
 
     return newArr;
