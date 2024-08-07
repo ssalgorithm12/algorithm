@@ -13,7 +13,7 @@ public class Swea_1213string_임채준2 {
     static int test; // 테스트케이스 숫자
 
 	public static void main(String[] args) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //bufferedreader 객체생
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //bufferedreader 객체생성
 		for(int t = 1; t <= T; t++) { // 테스트케이스 수에 대해
 	        test = Integer.parseInt(br.readLine()); // 테스트케이스 숫자 받기
 	        find = br.readLine(); // 찾는 문자열 받기
