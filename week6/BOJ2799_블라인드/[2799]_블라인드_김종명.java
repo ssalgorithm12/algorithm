@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
+// 메모리 19040KB, 시간 168ms
+
 public class Boj_2799 {
 
 	static int M;			// 건물 층수
