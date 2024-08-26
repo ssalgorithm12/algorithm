@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+
+// 메모리 18344KB 시간 156ms
 public class boj_2799_블라인드_김나영 {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
