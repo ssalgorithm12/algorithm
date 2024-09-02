@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-//메모리: 112900kb 시간: 672ms
+//메모리: 108528kb 시간: 416ms
 
 public class BOJ2573_빙산 {
 	public static void main(String[] args) throws IOException {
@@ -16,23 +16,29 @@ public class BOJ2573_빙산 {
 		int n = Integer.parseInt(st.nextToken());
 		int m = Integer.parseInt(st.nextToken());
 		int sum = 0; // 빙산의 크기 저장
-		int time = 0; // 걸린 시간 저장 
+		int time = -1; // 걸린 시간 저장 
 		int[] r = {1, -1, 0, 0};
 		int[] c = {0, 0, 1, -1};
 		int[][] a = new int[n][m];
 		int[][] b = new int[n][m]; // 빙산 복제 
 		Queue<int[]> q = new LinkedList<>();
 		boolean[][] visited;
+		int x = 0, y = 0;
 		
 		// 빙산 입력 
 		for(int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
 			for(int j = 0; j < m; j++) {
 				a[i][j] = Integer.parseInt(st.nextToken());
-				sum += a[i][j];
+				if(a[i][j] > 0) {
+					sum += a[i][j];
+					x = i;
+					y = j;
+				}
 			}
 		}
 
+		int sum1 = sum; // 빙산의 크기 저장
 		// 반복문 조건 
 		boolean check =true;
 
@@ -40,44 +46,10 @@ public class BOJ2573_빙산 {
 
 		while(check) {
 			time++;
-			int x = 0, y = 0;
-			
-			// 빙하가 모두 녹아버렸을 때
-			if(sum<=0) {
+			if(sum==0) {
 				time = 0;
 				break;
 			}
-			
-			// b[i][j] 초기화
-			for(int i = 0; i < n; i++) {
-				for(int j = 0; j < m; j++) {
-					b[i][j] = a[i][j];
-				}
-			}
-
-			// 빙하 녹이기 
-			for(int i = 0; i < n; i++) {
-				for(int j = 0; j < m; j++) {
-					if(a[i][j]!=0) {
-						for(int k = 0; k < 4; k++) {
-							int xr = i + r[k];
-							int yc = j + c[k];
-							if(xr < n && xr > -1 && yc < m && yc > -1 ) {
-								if(b[xr][yc] == 0 && a[i][j] > 0) {
-									a[i][j]--;
-									sum--;
-								}
-							}
-						}
-						// 0이 아닌 x, y 좌표 저장 
-						if(a[i][j] > 0) {
-							x = i;
-							y = j;
-						}
-					}
-				}	
-			}
-
 			//빙하가 녹은 후 덩어리 개수를 파악(x, y에서 bfs)
 			q.add(new int[] {x,y});
 			// bfs를 돌면서 만난 빙산의 크기 
@@ -98,13 +70,22 @@ public class BOJ2573_빙산 {
 							q.add(new int[] {xr,yc});
 							visited[xr][yc] = true;
 						}
+						else if(a[xr][yc]==0&&!visited[xr][yc]) {
+							if(a[x1][y1] > 0) {
+								a[x1][y1]--;
+								sum--;	
+							}
+						}
 					}
+				}
+				if(a[x1][y1]!=0) {
+					x = x1;
+					y = y1;
 				}
 			}
 			
-			if(sum != sum2) {
-				break;
-			}
+			if(sum1 != sum2) break;
+			else sum1 = sum;
 		}
 
 		System.out.print(time);
