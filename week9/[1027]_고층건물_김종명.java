@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
+// 메모리 14256KB, 시간 104ms
+// 기울기 비교
+
 public class Boj_1027_고층건물 {
 
 	static int count;
@@ -33,6 +36,7 @@ public class Boj_1027_고층건물 {
 		for(int i=0; i<count; i++) {
 			int total = 0;
 			
+			// 왼쪽 최대 기울기
 			double leftMin = 1000000001;
 			for(int j=i-1; j>=0; j--) {
 				
@@ -44,7 +48,7 @@ public class Boj_1027_고층건물 {
 				}
 				
 			}
-			
+			// 오른쪽 최대 기울기
 			double	rightMin = 1000000001;
 			for(int j=i+1; j<count; j++) {
 				
